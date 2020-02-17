@@ -12,6 +12,18 @@ interface BookingFactory {
   (guestsAmount: number, roomCodes: string[]): Booking;
 }
 
+// Solution
+
+const bookingFactory: BookingFactory = (
+  guestsAmount: number,
+  roomCodes: string[]
+) => ({
+  guestsAmount,
+  roomCodes,
+  hasPrivateTransfer: roomCodes.includes("ZZZ"),
+  discountPercentage: guestsAmount > 10 ? 0.1 : 0
+});
+
 // Present data
 
 const data: { roomCodes: string[]; guestsAmount: number }[] = [

@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/escalonc/design-patterns-intro#readme",
   "devDependencies": {
+    "@types/jest": "^25.1.2",
     "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
   }
