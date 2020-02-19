@@ -16,18 +16,15 @@ class ProductComposite implements VacationComponent {
   readonly isComposite: boolean;
   readonly quantity: number;
   readonly discount: number;
-
-  constructor(name?: string);
   constructor(
-    name?: string,
+    name: string,
     price?: number,
     quantity?: number,
-    discount?: number,
-    isComposite?: boolean
+    discount?: number
   ) {
     this.name = name || "";
     this.discount = discount ?? 0;
-    this.isComposite = isComposite ?? false;
+    this.isComposite = !price;
     this.defaultPrice = price ?? 500;
     this.quantity = quantity ?? 1;
     this.discount = discount ?? 0;
@@ -63,4 +60,13 @@ class ProductComposite implements VacationComponent {
   }
 }
 
-const vaction = new ProductComposite("Room 3", 900);
+const vaction1 = new ProductComposite("Room 1", 900);
+const vaction2 = new ProductComposite("Room 2", 900);
+const vaction3 = new ProductComposite("Room 3", 900);
+
+const promo = new ProductComposite("Promo");
+promo.add(vaction1);
+promo.add(vaction2);
+promo.add(vaction3);
+
+console.log(promo.subTotal);
