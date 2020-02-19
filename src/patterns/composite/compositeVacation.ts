@@ -1,4 +1,5 @@
 interface VacationComponent {
+  readonly name: string;
   readonly isComposite: boolean;
   readonly price: number;
   readonly quantity: number;
@@ -8,19 +9,42 @@ interface VacationComponent {
 }
 
 class ProductComposite implements VacationComponent {
-  private vacations: VacationComponent[];
+  private readonly vacations: VacationComponent[];
+  private readonly defaultPrice: number;
 
+  readonly name: string;
+  readonly isComposite: boolean;
+  readonly quantity: number;
+  readonly discount: number;
+
+  constructor(name?: string);
   constructor(
-    readonly isComposite: boolean,
-    readonly price: number,
-    readonly quantity: number,
-    readonly discount: number
+    name?: string,
+    price?: number,
+    quantity?: number,
+    discount?: number,
+    isComposite?: boolean
   ) {
+    this.name = name || "";
+    this.discount = discount ?? 0;
+    this.isComposite = isComposite ?? false;
+    this.defaultPrice = price ?? 500;
+    this.quantity = quantity ?? 1;
+    this.discount = discount ?? 0;
     this.vacations = [];
   }
 
   add(vacation: VacationComponent): void {
     this.vacations.push(vacation);
+  }
+
+  get price() {
+    return this.isComposite
+      ? this.vacations.reduce(
+          (previous, current) => previous + current.price,
+          0
+        )
+      : this.defaultPrice;
   }
 
   get subTotal() {
@@ -39,4 +63,4 @@ class ProductComposite implements VacationComponent {
   }
 }
 
-const vaction = new ProductComposite(false, 900, 2, 0);
+const vaction = new ProductComposite("Room 3", 900);
