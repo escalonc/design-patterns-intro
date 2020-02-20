@@ -1,29 +1,9 @@
-// Case: create new booking object to be presented in a table
-// Data source: stub data
-
 interface Booking {
   hasPrivateTransfer: boolean;
   roomCodes: string[];
   guestsAmount: number;
   discountPercentage: number;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // interface BookingFactory {
 //   (guestsAmount: number, roomCodes: string[]): Booking;
