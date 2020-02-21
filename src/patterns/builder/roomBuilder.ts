@@ -49,9 +49,11 @@ class BeachesRoomBuilder implements RoomBuilder {
 const builder = new BeachesRoomBuilder();
 
 const room = builder
-  .WithName("")
+  .WithName("Example Room")
   .WithPrice(2000)
   .WithCategories("Hi", "Hi2")
   .AppendAttribute("Att1")
   .AppendAttribute("Att2")
   .Build();
+
+console.log(room);

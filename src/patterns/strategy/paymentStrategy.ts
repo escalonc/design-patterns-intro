@@ -44,4 +44,4 @@ class PaymentService {
 
 const paymentService = new PaymentService();
 
-paymentService.pay(PaymentMethods.Paypal, 50000);
+paymentService.pay(PaymentMethods.CreditCard, 50000);

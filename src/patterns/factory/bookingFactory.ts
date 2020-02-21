@@ -26,10 +26,5 @@ const data: { roomCodes: string[]; guestsAmount: number }[] = [
 ];
 
 for (const { guestsAmount, roomCodes } of data) {
-  console.log({
-    guestsAmount,
-    roomCodes,
-    hasPrivateTransfer: roomCodes.includes("ZZZ"),
-    discountPercentage: guestsAmount > 10 ? 0.1 : 0
-  } as Booking);
+  console.log(bookingFactory(guestsAmount, roomCodes));
 }
